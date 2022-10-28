@@ -1,0 +1,27 @@
+{
+  "name": "odi-article-scraper",
+  "version": "1.0.0",
+  "description": "tool for scraping the odi website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "airtable": "^0.11.5",
+    "axios": "^1.1.3",
+    "colors": "^1.4.0",
+    "dotenv": "^16.0.2",
+    "fs": "0.0.1-security",
+    "googleapis": "^108.0.0",
+    "jsdom": "^20.0.1",
+    "node-schedule": "^2.1.0",
+    "nodejs-web-scraper": "^6.1.0",
+    "opencalais-tagging": "^2.2.0",
+    "puppeteer": "^19.0.0",
+    "soundcloud-scraper": "^5.0.3",
+    "uuid": "^9.0.0",
+    "youtube-tags": "^1.0.0"
+  }
+}
