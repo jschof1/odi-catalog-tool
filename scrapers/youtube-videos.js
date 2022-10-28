@@ -85,7 +85,7 @@ const getVideoData = async () => {
     const video = {
       Title: videoDetails.title,
       YouTubeDescription: videoDetails.description,
-      Tags: tags.join(", ").split[', '],
+      Tags: tags.join(", ").split(', '),
       "Event / Series": type,
       Description: videoDetails.description,
       viewCount: videoStats.viewCount,
