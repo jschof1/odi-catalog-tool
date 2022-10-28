@@ -105,7 +105,6 @@ const getVideoData = async () => {
 
 const runYouTubeUpdate = async () => {
   const videoData = await getVideoData();
-  await fetchTag.loadAndFetch(2, videoData, "Youtube Videos");
   await uploadFields.uploadToAirtable("Youtube Videos", videoData);
 };
 

@@ -121,6 +121,8 @@ function runChecker() {
   checkOdi("Blog", 'Address');
 }
 
+runChecker();
+
 module.exports = {
   runChecker,
 };

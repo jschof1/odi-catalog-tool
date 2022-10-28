@@ -28,7 +28,7 @@ function cleanAndExportOdiWebsite() {
     });
 }
 schedule.scheduleJob("0 0 0 * * 0", function () {
-  // linkChecker.runChecker();
+  linkChecker.runChecker();
   scrapeAndExportOdiWebsite();
   cleanAndExportOdiWebsite();
   ytScrape.runYoutubeScrape();

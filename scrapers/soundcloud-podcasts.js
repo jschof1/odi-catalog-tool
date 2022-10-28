@@ -3,6 +3,7 @@ const client = new SoundCloud.Client();
 const puppeteer = require("puppeteer");
 const tagger = require("../tagger/smart-tagger.js");
 const createAirtable = require("../airtable-connecters/add-new-fields-airtable.js");
+const { run } = require("googleapis/build/src/apis/run/index.js");
 
 const extractItems = () => {
   let items = [];
@@ -44,7 +45,7 @@ async function scrollAndReturn() {
   await page.goto("https://soundcloud.com/theodi");
 
   // Auto-scroll and extract desired items from the page. Currently set to extract ten items.
-  const items = await scrapeItems(page, extractItems, 20);
+  const items = await scrapeItems(page, extractItems, 5);
 
   // console.log(await items)
   await browser.close();
@@ -53,6 +54,21 @@ async function scrollAndReturn() {
   console.log(filteredItems);
   return filteredItems;
 }
+
+const findType = async (details) => {
+  if (await details.includes("ODI Summit")) {
+    return "ODI Summit";
+  } else if (await details.includes("ODI Futures")) {
+    return "ODI Podcast";
+  } else if (await details.includes("Canalside Chats")) {
+    return "ODI Research";
+  } else if (await details.includes("ODI Fridays")) {
+    return "ODI Fridays";
+  } else {
+    return "N/A";
+  }
+};
+
 
 // loop through links and call soundcloud api
 const getSongArrInfo = async () => {
@@ -65,16 +81,19 @@ const getSongArrInfo = async () => {
     }
     // clean song info. create object with title, descirption, thumbnail, url, thumbnail, duration, playcount, likes, comments title, artist, url
     let cleanSongArrInfo = songArrInfo.map((song) => {
+      
       return {
-        title: song.title,
-        description: song.description,
-        thumbnail: song.thumbnail,
-        url: song.url,
-        duration: song.duration,
-        playcount: song.playCount,
-        likes: song.likes,
-        published: song.publishedAt,
-        tags: [],
+        Title: song.title,
+        "Event / Series": "N/A",
+        Description: song.description,
+        Thumbnail: song.thumbnail,
+        URL: song.url,
+        Duration: song.duration.toString(),
+        "Play Count": song.playCount,
+        Likes: song.likes,
+        Upload: song.publishedAt.toString(),
+        Tags: [],
+        Type: ["Podcast"],
       };
     });
     return cleanSongArrInfo;
@@ -85,9 +104,10 @@ const getSongArrInfo = async () => {
 
 const runSoundCloudScrape = async () => {
   let myResult = await getSongArrInfo();
-  createAirtable(myResult, "Podcasts");
-  tagger.loadAndFetch(10, myResult.description, "Podcasts");
+  createAirtable.uploadToAirtable("Podcasts", myResult);
 };
+
+runSoundCloudScrape();
 
 module.exports = {
   runSoundCloudScrape,
