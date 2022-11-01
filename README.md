@@ -85,21 +85,21 @@ Currently we are using Airtable as a place to store and visualise the catalogue.
 - `add-odi-article-fields-airtable`: uploads the ODI article data to airtable the structure of the data is different from the other data at the moment. It includes the title, synopsis, categories, author, date, story, document url, type and address looping through the cleaned data, creating a new record in the airtable table with the data.
 - `attach-tags-airtable`: attaches tha Open Calais PermID intelligent tags to the airtable records the tags return a set of objects with index as its key and the tags as its value in an array the the first function converts the object to an array, removing the keys and then flattens the array to a single array of tags the second function then attaches the tags to the airtable records.
 
-# Cron
+## Cron
 
 - `cron`: this is the main application which runs all the other applications. It runs every 7 days and ensures that the data is not duplicated or overwritten. It also ensures that the data is properly formatted for upload to the database.
 
-# Scrapers
+## Scrapers
 
 - `odi-webiste`: This file scrapes the ODI article data from the ODI website. It returns the title, synopsis, categories, author, date, story, document url, type and address
 - `soundcloud-podcasts`: This scrapes the ODI SoundCloud data by the running a bot that can scroll page, finding every URL and then running the URL into the SoundCloud scraper API. It picks up the title, event/series, description, thumbnail, URL, duration,play count, likes, upload, tags, type.
 - `youtube-videos`:  this file uses the google api to get data from youtube and upload it to airtable. it takes in the channel id and the number of videos to scrape from the channel. gets the video id of every video in the channel and then gets the details of every video in the channel. gets the tags of every video in the channel. gets the type of every video in the channel. gets the stats of every video in the channel. uploads the data to airtable, returning a promise that resolves when the data is uploaded to airtable.
 
-# Tagger
+## Tagger
 - `smart-tagger`: This file uses a specific field in a JSON array and tags it using the PERMid open calais API. it takes in the number of records to tag, the array to tag, and the name of the base to tag. it returns a promise that resolves when the data is uploaded to airtable.
 
-# Link checker
+## Link checker
 - `link-checker`: This file grabs the links on airtable relating to youtube, vimeo, SoundCloud, and all ODI.org links found in the knowledge and opinion section. it uses either the websites relevant API or reads the html page checking if the page returns a generic error.
 
-# Cleaner
+## Cleaner
 - `cleaner`: This file takes the scraped ODI data and formats it to be uploaded to airtable without any errors and un.  characters.
