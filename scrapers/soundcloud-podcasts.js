@@ -69,7 +69,6 @@ const findType = async (details) => {
   }
 };
 
-
 // loop through links and call soundcloud api
 const getSongArrInfo = async () => {
   let songArr = await scrollAndReturn();
@@ -81,7 +80,6 @@ const getSongArrInfo = async () => {
     }
     // clean song info. create object with title, descirption, thumbnail, url, thumbnail, duration, playcount, likes, comments title, artist, url
     let cleanSongArrInfo = songArrInfo.map((song) => {
-      
       return {
         Title: song.title,
         "Event / Series": "N/A",

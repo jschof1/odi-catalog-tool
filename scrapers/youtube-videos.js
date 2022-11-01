@@ -4,7 +4,6 @@ const uploadFields = require("../airtable-connecters/add-new-fields-airtable.js"
 const fetchTag = require("../tagger/smart-tagger");
 require("dotenv").config({ path: "../.env" });
 
-
 const youtubeAPIKey = process.env["YOUTUBE_API_KEY"];
 
 let scrapeNum = 2;
@@ -18,7 +17,7 @@ const getVideoDetails = async (videoId) => {
     part: "snippet",
     id: videoId,
   });
-  
+
   return response.data.items[0].snippet;
 };
 
@@ -34,8 +33,6 @@ const getVideoStats = async (videoId) => {
   return response.data.items[0].statistics;
 };
 
-
-
 let ODI = "UCnNmia8FaXDeGAqZNQEF2RA";
 
 const getChannelVideos = async (channelId) => {
@@ -45,17 +42,16 @@ const getChannelVideos = async (channelId) => {
     order: "date",
     maxResults: scrapeNum,
   });
-  console.log('response', await response.data)
+  console.log("response", await response.data);
   return response.data.items;
 };
 
 // get video id of every video in the channel
 const getVideoIds = async (channelId) => {
   const videos = await getChannelVideos(channelId);
-  console.log(videos)
+  console.log(videos);
   return videos.map((video) => video.id.videoId);
 };
-
 
 // const getSmartTags = async () => {
 
@@ -85,7 +81,7 @@ const getVideoData = async () => {
     const video = {
       Title: videoDetails.title,
       YouTubeDescription: videoDetails.description,
-      Tags: tags.join(", ").split(', '),
+      Tags: tags.join(", ").split(", "),
       "Event / Series": type,
       Description: videoDetails.description,
       viewCount: videoStats.viewCount,
@@ -101,15 +97,14 @@ const getVideoData = async () => {
   } catch (err) {
     console.log(err);
   }
-}
+};
 
 const runYouTubeUpdate = async () => {
   const videoData = await getVideoData();
   await uploadFields.uploadToAirtable("Youtube Videos", videoData);
 };
 
-runYouTubeUpdate()
+runYouTubeUpdate();
 module.exports = {
   runYouTubeUpdate,
 };
-

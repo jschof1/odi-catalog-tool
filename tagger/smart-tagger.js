@@ -1,6 +1,3 @@
-
-
-
 const calais = require("opencalais-tagging");
 const addTags = require("../airtable-connecters/attach-tags-airtable.js");
 const token2 = process.env["API_TOKEN2"];
@@ -9,7 +6,7 @@ require("dotenv").config();
 const loadAndFetch = async (recNums, arrToUpdate, nameOfBase) => {
   let fileData = await arrToUpdate;
   let descriptions = [];
-  
+
   for (let i = 0; i < recNums; i++) {
     let description = fileData[i].YouTubeDescription;
     descriptions.push(description);
