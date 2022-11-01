@@ -73,9 +73,12 @@ There are many programmatic functionalities which are required to ensure the dat
 5. Write the data to a JSON file.
 6. Repeat this process for all the other sources.
 
-## 3. Syncing to a platform
 
-Currently we are using Airtable as a place to store and visualise the catalogue. After the data has been properly organised, the data will be pushed to the table platform every seven days.
+# Hosting and syncing the database
+
+Currently we are using Airtable as a place to store and visualise the catalogue. After the data has been properly organised, the data will be pushed to the table platform every seven days. This will allow us to have a live catalogue of all our outputs. The data will be pushed to the table platform using the Airtable API. 
+
+As a side-project, found in 
 
 # File explanation
 
@@ -91,7 +94,7 @@ Currently we are using Airtable as a place to store and visualise the catalogue.
 
 ## Scrapers
 
-- `odi-webiste`: This file scrapes the ODI article data from the ODI website. It returns the title, synopsis, categories, author, date, story, document url, type and address
+- `odi-website`: This file scrapes the ODI article data from the ODI website. It returns the title, synopsis, categories, author, date, story, document url, type and address
 - `soundcloud-podcasts`: This scrapes the ODI SoundCloud data by the running a bot that can scroll page, finding every URL and then running the URL into the SoundCloud scraper API. It picks up the title, event/series, description, thumbnail, URL, duration,play count, likes, upload, tags, type.
 - `youtube-videos`:  this file uses the google api to get data from youtube and upload it to airtable. it takes in the channel id and the number of videos to scrape from the channel. gets the video id of every video in the channel and then gets the details of every video in the channel. gets the tags of every video in the channel. gets the type of every video in the channel. gets the stats of every video in the channel. uploads the data to airtable, returning a promise that resolves when the data is uploaded to airtable.
 

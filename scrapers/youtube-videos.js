@@ -1,7 +1,3 @@
-// write a readme that explains how to use this and what it does
-// this file uses the google api to get data from youtube and upload it to airtable. it takes in the channel id and the number of videos to scrape from the channel. gets the video id of every video in the channel and then gets the details of every video in the channel. gets the tags of every video in the channel. gets the type of every video in the channel. gets the stats of every video in the channel. uploads the data to airtable. returns a promise that resolves when the data is uploaded to airtable.
-
-
 const { google } = require("googleapis");
 const ytbTags = require("youtube-tags");
 const uploadFields = require("../airtable-connecters/add-new-fields-airtable.js");
