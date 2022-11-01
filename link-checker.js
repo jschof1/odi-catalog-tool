@@ -24,7 +24,6 @@ const checkYoutube = async (type, column) => {
   let allLinks = await getLinks(type, column);
   let brokenLinks = [];
   for (let i = 0; i < allLinks.length; i++) {
-    console.log(allLinks[i]);
     let link = allLinks[i];
     if (link.includes("youtube")) {
       let id = link.split("v=")[1];
@@ -42,6 +41,7 @@ const checkVimeo = async (type, column) => {
   let allLinks = await getLinks(type, column);
   let brokenLinks = [];
   for (let i = 0; i < allLinks.length; i++) {
+    console.log(allLinks[i]);
     let link = allLinks[i];
     if (link.includes("vimeo")) {
       let id = link.split(".com/")[1];
@@ -59,6 +59,7 @@ const checkSoundCloud = async (type, column) => {
   let allLinks = await getLinks(type, column);
   let brokenLinks = [];
   for (let i = 0; i < allLinks.length; i++) {
+    console.log(allLinks[i]);
     let link = allLinks[i];
     if (link.includes("soundcloud")) {
       let id = link.split(".com/")[1];
@@ -109,15 +110,13 @@ const checkOdi = async (type, column) => {
       }
     }
   }
-  return brokenLinks;
+  return brokenLinks
 };
 
 function runChecker() {
-  checkYoutube("Youtube Videos", "Url"),
-  checkVimeo("Vimeo Videos", "Url"),
-  checkSoundCloud("Podcasts", "URL"),
-  checkOdi("Reports", 'Address');
-  checkOdi("Articles", 'Address');
+  checkYoutube("Youtube Videos", "Url")
+  checkVimeo("Vimeo", "URL")
+  checkOdi("Reports", 'address');
   checkOdi("Blog", 'Address');
 }
 

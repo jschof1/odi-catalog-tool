@@ -3,8 +3,6 @@ const scrapeData = require("./scrapers/odi-website.js");
 async function cleanWebsiteScrape(type) {
   let page = await scrapeData.scrape(type, 1);
 
-
-  // join every array elements into a string
   for (let i = 0; i < page.length; i++) {
     page[i].title = page[i].title.join("");
     page[i].synopsis = page[i].synopsis.join("");

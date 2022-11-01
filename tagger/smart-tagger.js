@@ -1,3 +1,6 @@
+
+
+
 const calais = require("opencalais-tagging");
 const addTags = require("../airtable-connecters/attach-tags-airtable.js");
 const token2 = process.env["API_TOKEN2"];
