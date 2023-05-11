@@ -3,12 +3,17 @@ const addTags = require("../airtable-connecters/attach-tags-airtable.js");
 const token2 = process.env["API_TOKEN2"];
 require("dotenv").config();
 
-const loadAndFetch = async (recNums, arrToUpdate, nameOfBase) => {
+const loadAndFetch = async (
+  recNums,
+  arrToUpdate,
+  nameOfBase,
+  valuesToAnalyse
+) => {
   let fileData = await arrToUpdate;
   let descriptions = [];
 
   for (let i = 0; i < recNums; i++) {
-    let description = fileData[i].YouTubeDescription;
+    let description = fileData[i][valuesToAnalyse];
     descriptions.push(description);
   }
 
@@ -19,8 +24,8 @@ const loadAndFetch = async (recNums, arrToUpdate, nameOfBase) => {
     let arr2 = [];
     i += 1;
     // choose how many requests you want to make - REMEMBER you are limited to 500 per day
-    if (i === 2) {
-      addTags.airtableAppend(arr, nameOfBase);
+    if (i === recNums.length) {
+      // addTags.airtableAppend(arr, nameOfBase);
       clearInterval(interval);
     }
     try {
@@ -46,7 +51,6 @@ const loadAndFetch = async (recNums, arrToUpdate, nameOfBase) => {
           arr2.push(x.name);
         }
       }
-      // console.log(arr2)
       return arr.push({ [i]: arr2 });
     } catch (err) {
       return arr.push({ [i]: ["DESCRIPTION EMPTY"] });

@@ -85,9 +85,6 @@ async function scrape(type, pageNumbers) {
 
   return pages;
 }
-
-// scrape("reports", 1);
-
 module.exports = {
   scrape,
 };

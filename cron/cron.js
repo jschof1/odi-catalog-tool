@@ -1,7 +1,6 @@
 const schedule = require("node-schedule");
 const ytScrape = require("../scrapers/youtube-videos.js");
 const scScrape = require("../scrapers/soundcloud-podcasts.js");
-// const linkChecker = require("../link-checker.js");
 const scraper = require("../scrapers/odi-website.js");
 const cleaner = require("../cleaner.js");
 

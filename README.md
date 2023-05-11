@@ -83,17 +83,14 @@ As a side-project, [found on github](https://github.com/jschof1/odi-scrape-to-mo
 # File explanation
 
 ## Airtable connectors
-
 - `add-new-fields-airtable`: uploads data to Airtable. Using the basename and the data, it creates a new table with a new record in the table.
 - `add-odi-article-fields-airtable`: uploads the ODI article data to airtable the structure of the data is different from the other data at the moment. It includes the title, synopsis, categories, author, date, story, document url, type and address looping through the cleaned data, creating a new record in the airtable table with the data.
 - `attach-tags-airtable`: attaches tha Open Calais PermID intelligent tags to the airtable records the tags return a set of objects with index as its key and the tags as its value in an array the the first function converts the object to an array, removing the keys and then flattens the array to a single array of tags the second function then attaches the tags to the airtable records.
 
 ## Cron
-
 - `cron`: this is the main application which runs all the other applications. It runs every 7 days and ensures that the data is not duplicated or overwritten. It also ensures that the data is properly formatted for upload to the database.
 
 ## Scrapers
-
 - `odi-website`: This file scrapes the ODI article data from the ODI website. It returns the title, synopsis, categories, author, date, story, document url, type and address
 - `soundcloud-podcasts`: This scrapes the ODI SoundCloud data by the running a bot that can scroll page, finding every URL and then running the URL into the SoundCloud scraper API. It picks up the title, event/series, description, thumbnail, URL, duration,play count, likes, upload, tags, type.
 - `youtube-videos`:  this file uses the google api to get data from youtube and upload it to airtable. it takes in the channel id and the number of videos to scrape from the channel. gets the video id of every video in the channel and then gets the details of every video in the channel. gets the tags of every video in the channel. gets the type of every video in the channel. gets the stats of every video in the channel. uploads the data to airtable, returning a promise that resolves when the data is uploaded to airtable.

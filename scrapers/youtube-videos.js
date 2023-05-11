@@ -1,7 +1,6 @@
 const { google } = require("googleapis");
 const ytbTags = require("youtube-tags");
 const uploadFields = require("../airtable-connecters/add-new-fields-airtable.js");
-const fetchTag = require("../tagger/smart-tagger");
 require("dotenv").config({ path: "../.env" });
 
 const youtubeAPIKey = process.env["YOUTUBE_API_KEY"];

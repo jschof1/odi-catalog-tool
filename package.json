@@ -16,6 +16,7 @@
     "fs": "0.0.1-security",
     "googleapis": "^108.0.0",
     "jsdom": "^20.0.1",
+    "mongodb-interaction-helpers": "^1.0.0",
     "node-schedule": "^2.1.0",
     "nodejs-web-scraper": "^6.1.0",
     "opencalais-tagging": "^2.2.0",
