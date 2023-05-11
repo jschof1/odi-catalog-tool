@@ -78,7 +78,7 @@ There are many programmatic functionalities which are required to ensure the dat
 
 Currently we are using Airtable as a place to store and visualise the catalogue. After the data has been properly organised, the data will be pushed to the table platform every seven days. This will allow us to have a live catalogue of all our outputs. The data will be pushed to the table platform using the Airtable API. 
 
-As a side-project, [found on github](https://github.com/jschof1/odi-scrape-to-mongodb) I have built a small application which will push the data to a MongoDB database using the MongoDB API.
+As a [side-project](https://github.com/jschof1/odi-scrape-to-mongodb) I have built a small application which will push the data to a MongoDB database using the MongoDB API.
 
 # File explanation
 
